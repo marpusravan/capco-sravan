@@ -1,0 +1,60 @@
+//colors
+$color_portage_approx: #7ea8f8;
+$white: #ffffff;
+$black: #000000;
+
+//@extend-elements
+//original selectors
+//table th, table td
+%extend_1 {
+  border-width: 0.5px;
+  border-color: $color_portage_approx;
+  border-style: solid;
+  padding: 5px;
+}
+
+//original selectors
+//thead tr, tbody tr
+%extend_2 {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+}
+
+
+table {
+  width: 100%;
+  background-color: $white;
+  border-collapse: collapse;
+  border-width: 2px;
+  border-color: $color_portage_approx;
+  border-style: solid;
+  color: $black;
+  th {
+    @extend %extend_1;
+  }
+  td {
+    @extend %extend_1;
+  }
+  thead {
+    background-color: $color_portage_approx;
+    overflow: hidden;
+    display: block;
+    width: 95vw;
+  }
+}
+tbody {
+  display: block;
+  height: 400px;
+  overflow: auto;
+  width: 95vw;
+  tr {
+    @extend %extend_2;
+  }
+}
+thead {
+  width: calc(100% - 1em );
+  tr {
+    @extend %extend_2;
+  }
+}

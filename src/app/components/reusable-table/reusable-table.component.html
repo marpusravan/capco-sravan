@@ -1,0 +1,20 @@
+<table class="table" *ngIf="dataProvider; else elseBlock">
+  <thead #tableHead>
+  <tr>
+    <td width="300" *ngFor="let column of dataProvider.columnsConfig">{{column.headerName}}</td>
+    <td width="300">Actions</td>
+  </tr>
+  </thead>
+  <tbody #tableBody (scroll)="updateHeaderScrollPosition(tableBody,tableHead)">
+  <tr *ngFor="let row of dataProvider.rowData; let rowIndex =index;">
+    <td width="300" *ngFor="let column of dataProvider.columnsConfig">{{row[column.fieldName]}}</td>
+    <td width="300">
+      <button type="button" (click)="submitClick.emit(row)">Submit</button>
+    </td>
+  </tr>
+  </tbody>
+  <tfoot>
+  <h4>Footer for Table</h4></tfoot>
+</table>
+
+<ng-template #elseBlock>Please Provide valid DataProvider</ng-template>
